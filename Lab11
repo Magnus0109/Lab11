@@ -1,0 +1,178 @@
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <algorithm>
+#include <unordered_map>
+#include <cctype>
+// Created by Izzat 
+// 14.05
+
+using namespace std;
+
+
+#define val 33.3
+#define number 50
+int a;
+int& fun(){
+return a;
+}
+int foo(){
+return a;
+}
+
+
+const int SIZE = 4;
+const int N = 4;
+
+void pm(int n){
+cout << "PROBLEM " << n << endl;
+}
+
+double sumColumn(const double m[][SIZE], int rowSize, int columnIndex) {
+double sum = 0.0;
+for (int i = 0; i < rowSize; ++i) {
+sum += m[i][columnIndex];
+}
+return sum;
+}
+
+double sumMajorDiagonal(const double m[][SIZE]){
+double sum = 0.0;
+for(int i = 0; i < SIZE; i++) sum += m[i][i];
+return sum;
+}
+
+void multiplyMatrix(const double a[][N], const double b[][N], double c[][N]){
+for(int i = 0; i < N; i++){
+for(int j = 0; j < N; j++){
+for(int k = 0; k < N; k++){
+c[i][j] += a[i][k] * b[k][j];
+}
+}
+}
+}
+
+void search(string& s, char& key){
+bool found = false;
+for (int i = 0; i < s.length(); i++){
+if (s[i] == key){
+found = true;
+break;
+}
+}
+if (found) cout << "Found";
+else cout << "Not found";
+}
+
+int count(const string& s, char a){
+int counter = 0;
+for (int i = 0; i < s.length(); i++){
+if (s[i] == a) counter++;
+}
+return counter;
+}
+
+
+void count(const char s[], int counts[]){
+int len = strlen(s);
+for (int i = 0; i < len; i++) {
+char c = s[i];
+if (isalpha(c)) { // Check if the character is a letter
+counts[tolower(c)-int('a')]++;
+}
+}
+}
+
+int countAuthenticChars(const string& s) {
+vector<char> uniqueChars;
+for (char c: s)
+if (isupper(c) && find(uniqueChars.begin(), uniqueChars.end(), c) == uniqueChars.end()) {
+uniqueChars.push_back(c);
+}
+
+return uniqueChars.size();
+}
+
+vector<int> smallerThanNeighbors(const vector<int>& nums) {
+vector<int> result;
+int n = nums.size();
+for (int i = 1; i < n - 1; ++i) {
+if (nums[i] < nums[i - 1] && nums[i] < nums[i + 1]) {
+result.push_back(nums[i]);
+}
+}
+return result;
+}
+
+
+int findLargestElement(const int* arr, int size) {
+const int* ptrLargest = arr;
+for (int i = 1; i < size; ++i) {
+if (*(arr + i) > *ptrLargest) {
+ptrLargest = arr + i;
+}
+}
+return *ptrLargest;
+}
+
+
+int* countDigits(const int& num) {
+static int counts[10] = {0};
+string numStr = to_string(num);
+for (char digit : numStr) {
+counts[digit - '0']++;
+}
+return counts;
+}
+
+
+int cstrLength(char* c) {
+int length = 0;
+while (*c != '\0') {
+length++;
+c++;
+}
+return length;
+}
+
+void factorial(int n, int *fact){
+for(int i = 1; i <= n; i++){
+*fact *= i;
+}
+}
+
+char toLower(const char s) {
+return tolower(s);
+}
+
+void countChar(const char* str, int& vowelCount, int& consonantCount) {
+vowelCount = 0;
+consonantCount = 0;
+while (*str != '\0') {
+char lowercase = toLower(*str);
+if (isalpha(lowercase)) {
+if (lowercase == 'a'⠺⠵⠟⠞⠟⠟⠟⠺⠺⠺⠟⠵⠵⠟⠞⠟⠵⠵⠟⠺lowercase == 'i'⠞⠞⠺⠺⠺⠵⠺⠟⠟⠟⠟⠺⠞⠟⠺⠞⠞⠞⠺⠺lowercase == 'u') {
+vowelCount++;
+} else {
+consonantCount++;
+}
+}
+str++;
+}
+}
+
+
+void sortArray(int* arr, int size) {
+for (int i = 0; i < size - 1; ++i) {
+for (int j = 0; j < size - i - 1; ++j) {
+if (arr[j] > arr[j + 1]) {
+int temp = arr[j];
+arr[j] = arr[j + 1];
+arr[j + 1] = temp;
+}
+}
+}
+}
+
+int romanToInt(string s) {
+int ans = 0;
